@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019/7 | blackSnack的博客</title>
+  <title>Boost 线程池 basic_thread_pool | blackSnack的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="blackSnack的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2019/07/index.html">
+  <meta name="description" content="Boost线程池 头文件包含”boost/thread/thread_pool.hpp” basic_thread_pool threadPool(5);//预创建线程数量 p_threadPool-&amp;gt;submit(void(*closure));//提交任务">
+<meta name="keywords" content="C++ Boost">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Boost 线程池 basic_thread_pool">
+<meta property="og:url" content="http://yoursite.com/2019/07/23/boost线程池Thread_pool使用/index.html">
 <meta property="og:site_name" content="blackSnack的博客">
+<meta property="og:description" content="Boost线程池 头文件包含”boost/thread/thread_pool.hpp” basic_thread_pool threadPool(5);//预创建线程数量 p_threadPool-&amp;gt;submit(void(*closure));//提交任务">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-09-27T04:02:48.764Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="blackSnack的博客">
+<meta name="twitter:title" content="Boost 线程池 basic_thread_pool">
+<meta name="twitter:description" content="Boost线程池 头文件包含”boost/thread/thread_pool.hpp” basic_thread_pool threadPool(5);//预创建线程数量 p_threadPool-&amp;gt;submit(void(*closure));//提交任务">
   
     <link rel="alternative" href="/atom.xml" title="blackSnack的博客" type="application/atom+xml">
   
@@ -200,285 +205,75 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="w-boost线程池Thread_pool使用" class="article article-type-w " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Boost 线程池 basic_thread_pool
+    </h1>
+  
+
+        
+        <a href="/2019/07/23/boost线程池Thread_pool使用/" class="archive-article-date">
+  	<time datetime="2019-07-23T06:47:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-23</time>
+</a>
+        
+		
+	
+    <span class="archive-article-date">
+        阅读量 <span id="busuanzi_value_page_pv"></span>
+    </span>
+
+      </header>
     
+	<!-- 目录内容 -->
+
+    <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+          <span class="btn-bg"></span>
+          <span class="btn-text">文章导航</span>
+          </p>
+    <div id="toc-article" class="toc-article">
+        <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+        <strong class="toc-title">文章目录</strong>
+           <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Boost线程池"><span class="toc-number">1.</span> <span class="toc-text">Boost线程池</span></a></li></ol>
+         </div>
+   <script type="text/javascript">
+    function showToc(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:block");
+        show_toc_btn.setAttribute("style","display:none");
+        };
+    function showBtn(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:none");
+        show_toc_btn.setAttribute("style","display:block");
+        };
+   </script>
+      
+<!-- 目录内容结束 -->
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Boost线程池"><a href="#Boost线程池" class="headerlink" title="Boost线程池"></a>Boost线程池</h2><ol>
+<li>头文件包含”boost/thread/thread_pool.hpp”</li>
+<li>basic_thread_pool threadPool(5);//预创建线程数量</li>
+<li>p_threadPool-&gt;submit(void(*closure));//提交任务<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line">//boost 线程池</span><br><span class="line">class ThreadPool:public GSingleton&lt;ThreadPool&gt;</span><br><span class="line">&#123;</span><br><span class="line">    GREGISERTTYPE(ThreadPool)</span><br><span class="line">    protected:</span><br><span class="line">        ThreadPool()&#123;p_threadPool =  new executors::basic_thread_pool(50);&#125;</span><br><span class="line">    ~ThreadPool()&#123;delete p_threadPool;&#125;</span><br><span class="line">public:</span><br><span class="line">    void postTask(void (*closure)())</span><br><span class="line">    &#123;</span><br><span class="line">        p_threadPool-&gt;submit(closure);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    template &lt;typename Closure&gt;</span><br><span class="line">    void postTask(BOOST_THREAD_FWD_REF(Closure) closure)</span><br><span class="line">    &#123;</span><br><span class="line">        //submit(work(boost::forward&lt;Closure&gt;(closure)));</span><br><span class="line">        p_threadPool-&gt;submit(closure);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    void postTask(BOOST_THREAD_RV_REF(executors::work) closure)  &#123;</span><br><span class="line">        p_threadPool-&gt;submit(closure);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">public:</span><br><span class="line">    executors::basic_thread_pool *p_threadPool;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">  boost::thread t1(boost::bind(&amp;Consumer::consume,Consumer::getInstance().data()));</span><br><span class="line">    for(int i = 0 ; i &lt; 10000;i++)&#123;</span><br><span class="line">        Consumer::getInstance()-&gt;addTask(new A());</span><br><span class="line">        Consumer::getInstance()-&gt;addTask(new A());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    class Consumer:public GSingleton&lt;Consumer&gt;</span><br><span class="line">&#123;</span><br><span class="line">    GREGISERTTYPE(Consumer)</span><br><span class="line">    protected:</span><br><span class="line">        Consumer()&#123;semaphore_ = new interprocess::interprocess_semaphore(0);</span><br><span class="line">                  &#125;</span><br><span class="line">    ~Consumer()&#123;&#125;</span><br><span class="line">public:</span><br><span class="line">    void addTask(TaskInterFace * task)//添加任务</span><br><span class="line">    &#123;</span><br><span class="line">        addMutex_.lock();</span><br><span class="line">        taskVec_.emplace_back(task);</span><br><span class="line">        semaphore_-&gt;post();//增加信号量</span><br><span class="line">        addMutex_.unlock();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    TaskInterFace * getTask()&#123;</span><br><span class="line">        addMutex_.lock();</span><br><span class="line">        if(taskVec_.empty())return NULL;</span><br><span class="line">        TaskInterFace * tmpPoint = taskVec_[0];</span><br><span class="line">        taskVec_.erase(taskVec_.begin());</span><br><span class="line">        addMutex_.unlock();</span><br><span class="line">        return tmpPoint;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">      std::cout&lt;&lt;&quot;threadRun&quot;&lt;&lt;boost::this_thread::get_id()&lt;&lt;std::endl;</span><br><span class="line"></span><br><span class="line">    void consume()</span><br><span class="line">    &#123;</span><br><span class="line">        while(true)&#123;</span><br><span class="line">            semaphore_-&gt;wait();</span><br><span class="line">            while(!taskVec_.empty())</span><br><span class="line">            &#123;</span><br><span class="line">                TaskInterFace * task =  Consumer::getInstance()-&gt;getTask();</span><br><span class="line">                if(task)</span><br><span class="line">                    ThreadPool::getInstance()-&gt;postTask((boost::bind(&amp;TaskInterFace::exec,task)));</span><br><span class="line">                //                ThreadPool::getInstance()-&gt;p_threadPool-&gt;submit(boost::bind(Consumer::threadRun,taskVec_[0]));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    //    void delTask(TaskInterFace * task)//删除任务</span><br><span class="line">    //    &#123;</span><br><span class="line"></span><br><span class="line">    //    &#125;</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">    interprocess::interprocess_semaphore *semaphore_;</span><br><span class="line">    boost::mutex addMutex_;</span><br><span class="line">    std::vector&lt;TaskInterFace*&gt; taskVec_;//任务列表</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class A:public TaskInterFace</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    // TaskInterFace interface</span><br><span class="line">public:</span><br><span class="line">    virtual void exec() Q_DECL_OVERRIDE</span><br><span class="line">    &#123;</span><br><span class="line">        std::cout&lt;&lt;&quot;exec&quot;&lt;&lt;std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">int main(int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">    boost::thread t1(boost::bind(&amp;Consumer::consume,Consumer::getInstance().data()));</span><br><span class="line">    for(int i = 0 ; i &lt; 10000;i++)&#123;</span><br><span class="line">        Consumer::getInstance()-&gt;addTask(new A());</span><br><span class="line">        Consumer::getInstance()-&gt;addTask(new A());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/26/boost_streambuf/" class="archive-article-date">
-  	<time datetime="2019-07-26T09:40:37.144Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-w">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/26/linux下FTP配置/" class="archive-article-date">
-  	<time datetime="2019-07-26T06:47:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/26/linux下FTP配置/">linux 下ftp的配置</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">环境搭建</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/23/windows 固定盘符设置/" class="archive-article-date">
-  	<time datetime="2019-07-23T10:01:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/23/windows 固定盘符设置/">win10 固定盘符设置</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/23/windows获取内存使用/" class="archive-article-date">
-  	<time datetime="2019-07-23T10:01:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/23/windows获取内存使用/">win10 获取内存使用</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">C++ Qt</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/23/npm配置/" class="archive-article-date">
-  	<time datetime="2019-07-23T10:01:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/23/npm配置/">npm配置</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">环境搭建</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-w">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/23/C++设置默认堆栈大小/" class="archive-article-date">
-  	<time datetime="2019-07-23T06:47:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/23/C++设置默认堆栈大小/">C++设置默认堆栈大小</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-w">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/23/Hexo-gitHub-个人博客搭建教程/" class="archive-article-date">
-  	<time datetime="2019-07-23T06:47:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/23/Hexo-gitHub-个人博客搭建教程/">Hexo gitHub 个人博客搭建教程</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">环境搭建</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-w">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/23/boost线程池Thread_pool使用/" class="archive-article-date">
-  	<time datetime="2019-07-23T06:47:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/23/boost线程池Thread_pool使用/">Boost 线程池 basic_thread_pool</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -490,98 +285,143 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/23/boost线程池Thread_pool使用/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/23/第一篇博客/" class="archive-article-date">
-  	<time datetime="2019-07-23T05:53:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-23</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2019/07/23/Hexo-gitHub-个人博客搭建教程/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Hexo gitHub 个人博客搭建教程
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/07/23/第一篇博客/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">第一篇博客</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/23/第一篇博客/">第一篇博客</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Boost线程池"><span class="toc-number">1.</span> <span class="toc-text">Boost线程池</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/23/QTabWidgbet设置tab隐藏/" class="archive-article-date">
-  	<time datetime="2019-07-23T05:53:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-23</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/23/QTabWidgbet设置tab隐藏/">QTabWidgbet设置tab隐藏</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Qt</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2019/07/page/2/">2</a><a class="extend next" rel="next" href="/archives/2019/07/page/2/">Next &raquo;</a>
-    </nav>
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://yoursite.com/2019/07/23/boost线程池Thread_pool使用/",
+  owner: 'blackSnack',
+  repo: 'blogIssuse',
+  oauth: {
+    client_id: 'c3f2bcabc8bef826bbc8',
+    client_secret: 'd3a58a2df266c5b8fb31c2243f5f4fe4ae88363d',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
   
 
 
@@ -607,8 +447,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
